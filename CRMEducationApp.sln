@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRM API", "CRM API\CRM API.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM Presendation", "CRM Presendation\CRM Presendation.csproj", "{16BF1C05-FB16-4BEF-9039-4D1870DA54E6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM Data", "CRM Data\CRM Data.csproj", "{BAA93EE4-9F4E-434F-89C1-D84045C8B6E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{16BF1C05-FB16-4BEF-9039-4D1870DA54E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16BF1C05-FB16-4BEF-9039-4D1870DA54E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16BF1C05-FB16-4BEF-9039-4D1870DA54E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAA93EE4-9F4E-434F-89C1-D84045C8B6E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAA93EE4-9F4E-434F-89C1-D84045C8B6E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAA93EE4-9F4E-434F-89C1-D84045C8B6E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAA93EE4-9F4E-434F-89C1-D84045C8B6E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

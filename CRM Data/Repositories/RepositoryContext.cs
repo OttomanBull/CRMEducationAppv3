@@ -1,6 +1,5 @@
 ﻿using Core.Entitites;
 using Microsoft.EntityFrameworkCore;
-using System.Diagnostics.Eventing.Reader;
 
 namespace CRM_API.Repositories
 {
