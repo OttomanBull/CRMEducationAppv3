@@ -22,9 +22,26 @@ namespace CRM_API.Controllers
             var people = _context.People.ToList();
             return Ok(people);
         }
+        [HttpGet("{id:int}")]
+        public IActionResult GetOnePerson([FromRoute(Name = "id")] int id)
+        {
+            try
+            {
+                var person = _context.People.SingleOrDefault(x => x.Id == id);
+                if (person is null)
+                    return NotFound();
+
+                return Ok(person);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
         [HttpPost]
-        public IActionResult CreateOneActivity([FromBody] Person person)
+        public IActionResult CreateOnePerson([FromBody] Person person)
         {
             try
             {
@@ -39,6 +56,62 @@ namespace CRM_API.Controllers
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
+            }
+        }
+        [HttpPut("{id:int}")]
+        public IActionResult UpdateOnePerson([FromRoute(Name = "id")] int id, [FromBody] Person person)
+        {
+            try
+            {
+                //istenilen kısmı bul
+                var entity = _context.People.SingleOrDefault(x => x.Id == id);
+
+                if (entity is null)
+                    return NotFound();
+                if (id != person.Id)
+                    return BadRequest();
+
+                entity.Name = person.Name;
+                entity.Surname = person.Surname;
+                entity.Status = person.Status;
+                entity.Phone = person.Phone;
+                entity.CompanyId = person.CompanyId;
+                entity.IsActive = person.IsActive;
+                entity.CreateDateTime = person.CreateDateTime;
+                entity.UpdateDateTime = person.UpdateDateTime;
+                entity.Comment = person.Comment;
+
+                _context.SaveChanges();
+                return Ok(person);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
+        [HttpDelete("{id:int}")]
+        public IActionResult DeleteOnePerson([FromRoute(Name = "id")] int id)
+        {
+            try
+            {
+                var entity = _context.People.SingleOrDefault(x => x.Id == id);
+
+                if (entity is null)
+                    return NotFound(new
+                    {
+                        StatusCode = 404,
+                        message = $"Şu Idye Sahip Kitap Bulunamadı: {id}"
+                    });
+
+                _context.People.Remove(entity);
+                _context.SaveChanges();
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
         }
     }
