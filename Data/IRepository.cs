@@ -13,8 +13,6 @@ namespace Data
 
         Task<T> UpdateAsync(T item);
 
-        Task DeleteItemAsync(T item);
-
         Task DeleteByIdAsync(int id);
 
         IQueryable<T> Filter(Expression<Func<T, bool>> expression);
