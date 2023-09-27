@@ -9,7 +9,7 @@ namespace CRM_Presendation.Controllers
     public class PersonController : Controller
     {
 
-        HttpClientHandler _clientHandler;
+        HttpClientHandler _clientHandler = new HttpClientHandler();
         PersonViewModel _personViewModel;
         List<PersonViewModel> _personViewModels;
 
@@ -20,24 +20,26 @@ namespace CRM_Presendation.Controllers
                 return true;
             };
         }
-        public IActionResult Index()
+        public IActionResult IndexAsync()
         {
-            return View();
+            var _personViewModels = GetAllPeople();
+
+            return View(_personViewModels.Result.ToList());
         }
 
         [HttpGet]
         public async Task<List<PersonViewModel>> GetAllPeople()
         {
             _personViewModels = new List<PersonViewModel>();
-            using (var httpClient=new HttpClient(_clientHandler))
+            using (var httpClient = new HttpClient(_clientHandler))
             {
-                using (var response=await httpClient.GetAsync("https://localhost:7099/api/Person"))
+                using (var response = await httpClient.GetAsync("https://localhost:7099/api/Person"))
                 {
-                    string apiResponse=await response.Content.ReadAsStringAsync();
-                    _personViewModels=JsonConvert.DeserializeObject<List<PersonViewModel>>(apiResponse);
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    _personViewModels = JsonConvert.DeserializeObject<List<PersonViewModel>>(apiResponse);
                 }
             }
-                return _personViewModels;
+            return _personViewModels;
         }
 
         [HttpGet]
@@ -46,7 +48,7 @@ namespace CRM_Presendation.Controllers
             _personViewModel = new PersonViewModel();
             using (var httpClient = new HttpClient(_clientHandler))
             {
-                using (var response = await httpClient.GetAsync("https://localhost:7099/api/Person/"+personId))
+                using (var response = await httpClient.GetAsync("https://localhost:7099/api/Person/" + personId))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     _personViewModel = JsonConvert.DeserializeObject<PersonViewModel>(apiResponse);
@@ -64,7 +66,7 @@ namespace CRM_Presendation.Controllers
             {
                 StringContent content = new StringContent(JsonConvert.SerializeObject(person), Encoding.UTF8, "application/json");
 
-                using (var response = await httpClient.PostAsync("https://localhost:7099/api/Person",content))
+                using (var response = await httpClient.PostAsync("https://localhost:7099/api/Person", content))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     _personViewModel = JsonConvert.DeserializeObject<PersonViewModel>(apiResponse);
@@ -83,7 +85,7 @@ namespace CRM_Presendation.Controllers
                 using (var response = await httpClient.DeleteAsync("https://localhost:7099/api/Person/" + personId))
                 {
                     message = await response.Content.ReadAsStringAsync();
-             
+
                 }
             }
             return message;

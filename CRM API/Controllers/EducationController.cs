@@ -2,6 +2,7 @@
 using CRM_API.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CRM_API.Controllers
 {
@@ -22,6 +23,13 @@ namespace CRM_API.Controllers
             try
             {
                 var educations = _context.Educations.ToList();
+                //var query =
+                //from act in _context.Activities
+                //join edu in _context.Educations on act.EducationId equals edu.Id               
+                //select new { 
+                //    Post = post, 
+                //    Meta = meta 
+                //};
                 return Ok(educations);
             }
             catch (Exception ex)
@@ -78,15 +86,15 @@ namespace CRM_API.Controllers
                     return NotFound();
                 if (id != education.Id)
                     return BadRequest();
-                                                     
-                entity.EducationName     = education.EducationName;
+
+                entity.EducationName = education.EducationName;
                 entity.EducationContents = education.EducationContents;
-                entity.Comment           = education.Comment;
-                entity.IsActive          = education.IsActive;
-                entity.CreateDateTime    = education.CreateDateTime;
-                entity.UpdateDateTime    = education.UpdateDateTime;
-                
-               
+                entity.Comment = education.Comment;
+                entity.IsActive = education.IsActive;
+                entity.CreateDateTime = education.CreateDateTime;
+                entity.UpdateDateTime = education.UpdateDateTime;
+
+
 
                 _context.SaveChanges();
                 return Ok(education);

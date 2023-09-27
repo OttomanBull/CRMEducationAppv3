@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title="Person";
+    ViewBag.Title = "Person";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -14,9 +14,10 @@
 </head>
 <body>
     <h1>Person List</h1>
-    <table>
+    <table class="table">
         <thead>
             <tr>
+                <th>Id</th>
                 <th>Name</th>
                 <th>Surname</th>
                 <th>Status</th>
@@ -32,9 +33,15 @@
             @foreach (var person in Model)
             {
                 <tr>
+             
+                    <td>@person.Id</td>
                     <td>@person.Name</td>
                     <td>@person.Surname</td>
-                    <td>@person.Status</td>
+                    @if (@person.Status == "1")
+                    {
+                        <td>Admin</td>
+                    }
+                   
                     <td>@person.Phone</td>
                     <td>@person.CompanyId</td>
                     <td>@person.IsActive</td>
@@ -48,4 +55,3 @@
 </body>
 </html>
 
-</script>

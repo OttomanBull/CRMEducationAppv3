@@ -3,5 +3,6 @@
     public class BaseEntityView
     {
         public int Id { get; set; }
+
     }
 }
