@@ -8,12 +8,11 @@ namespace Core.Entitites
 {
     public class Request:BaseEntity
     {
-        public int ActivityId { get; set; }
-        public int EducationId { get; set; }
-        public byte DemandStatus { get; set; }
-        public byte ClassNumber { get; set; }
-        public byte RowNumber { get; set; }
-        public DateTime CreateDateTime { get; set; }
-        public DateTime UpdateDateTime { get; set; }
+        public int? PersonId { get; set; }
+        public int? ActivityId { get; set; }
+        public bool? DemandStatus { get; set; }
+        public int? NumberOfPeople { get; set; }
+        public DateTime? CreateDateTime { get; set; }
+        public DateTime? UpdateDateTime { get; set; }
     }
 }

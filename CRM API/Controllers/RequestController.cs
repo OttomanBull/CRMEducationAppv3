@@ -70,14 +70,17 @@ namespace CRM_API.Controllers
                     return NotFound();
                 if (id != request.Id)
                     return BadRequest();
+                      
+                
 
-                entity.ActivityId = request.ActivityId;
-                entity.EducationId = request.EducationId;
-                entity.DemandStatus = request.DemandStatus;
-                entity.ClassNumber = request.ClassNumber;
-                entity.RowNumber = request.RowNumber;
-                entity.CreateDateTime = request.CreateDateTime;
-                entity.UpdateDateTime = request.UpdateDateTime;
+                entity.PersonId          = request.PersonId            ;
+                entity.ActivityId        = request.ActivityId          ;
+                entity.DemandStatus      = request.DemandStatus        ;
+                entity.NumberOfPeople    = request.NumberOfPeople      ;
+                entity.CreateDateTime    = request.CreateDateTime      ;
+                entity.UpdateDateTime    = request.UpdateDateTime      ;
+
+
 
 
                 _context.SaveChanges();

@@ -8,11 +8,11 @@ namespace Core.Entitites
 {
     public class Education:BaseEntity
     {
-        public string EducationName { get; set; }
-        public string EducationContents { get; set; }
-        public string Comment { get; set; }
-        public bool IsActive { get; set; }
-        public DateTime CreateDateTime { get; set; }
-        public DateTime UpdateDateTime { get; set; }
+        public string? EducationName { get; set; }
+        public string? EducationContents { get; set; }
+        public string? Comment { get; set; }
+        public bool? IsActive { get; set; }
+        public DateTime? CreateDateTime { get; set; }
+        public DateTime? UpdateDateTime { get; set; }
     }
 }

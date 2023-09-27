@@ -77,9 +77,9 @@ namespace CRM_API.Controllers
 
                 if (entity is null)
                     return NotFound();
-                if (id != activity.Id)
-                    return BadRequest();
-
+                if (id != activity.Id)      
+                    return BadRequest();        
+                               
                 entity.EducationId = activity.EducationId;
                 entity.InstructorId = activity.InstructorId;
                 entity.ActivityType = activity.ActivityType;
@@ -91,7 +91,7 @@ namespace CRM_API.Controllers
                 entity.Certificate = activity.Certificate;
                 entity.CreateDateTime = activity.CreateDateTime;
                 entity.UpdateDateTime = activity.UpdateDateTime;
-
+                 
                 _context.SaveChanges();
                 return Ok(activity);
             }

@@ -78,13 +78,13 @@ namespace CRM_API.Controllers
                     return NotFound();
                 if (id != education.Id)
                     return BadRequest();
-
-                entity.EducationName = education.EducationName;
+                                                     
+                entity.EducationName     = education.EducationName;
                 entity.EducationContents = education.EducationContents;
-                entity.Comment = education.Comment;
-                entity.IsActive = education.IsActive;
-                entity.CreateDateTime = education.CreateDateTime;
-                entity.UpdateDateTime = education.UpdateDateTime;
+                entity.Comment           = education.Comment;
+                entity.IsActive          = education.IsActive;
+                entity.CreateDateTime    = education.CreateDateTime;
+                entity.UpdateDateTime    = education.UpdateDateTime;
                 
                
 

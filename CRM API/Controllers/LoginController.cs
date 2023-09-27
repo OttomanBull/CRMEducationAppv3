@@ -19,37 +19,21 @@ namespace CRM_API.Controllers
         [HttpPost("login")]
         public ActionResult Login(Login login)
         {
-            var userToLogin = _context.Login(login);
-            if (!userToLogin.Success)
+            try
             {
-                return BadRequest(userToLogin.Message);
-            }
+                var userToLogin = _context.Login.FirstOrDefault(x => x.UserName == login.UserName && x.Password == login.Password);
+                if (userToLogin == null)
+                    return BadRequest("Kullanıcı Bulunamadı");
 
-            var result = _authService.CreateAccessToken(userToLogin.Data);
-            if (result.Success)
+                return Ok(userToLogin.PersonId);
+            }
+            catch (Exception ex)
             {
-                return Ok(result.Data);
-            }
 
-            return BadRequest(result.Message);
+                throw new Exception(ex.Message);
+
+            }
         }
 
-        [HttpPost("register")]
-        public ActionResult Register(UserForRegisterDto userForRegisterDto)
-        {
-            var userExists = _authService.UserExists(userForRegisterDto.Email);
-            if (!userExists.Success)
-            {
-                return BadRequest(userExists.Message);
-            }
-
-            var registerResult = _authService.Register(userForRegisterDto, userForRegisterDto.Password);
-            var result = _authService.CreateAccessToken(registerResult.Data);
-            if (result.Success)
-            {
-                return Ok(result.Data);
-            }
-
-            return BadRequest(result.Message);
-        }
+    }
 }

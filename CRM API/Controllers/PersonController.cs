@@ -71,15 +71,15 @@ namespace CRM_API.Controllers
                 if (id != person.Id)
                     return BadRequest();
 
-                entity.Name = person.Name;
-                entity.Surname = person.Surname;
-                entity.Status = person.Status;
-                entity.Phone = person.Phone;
-                entity.CompanyId = person.CompanyId;
-                entity.IsActive = person.IsActive;
+                entity.Name           = person.Name;
+                entity.Surname        = person.Surname;
+                entity.Status         = person.Status;
+                entity.Phone          = person.Phone;
+                entity.CompanyId      = person.CompanyId;
+                entity.IsActive       = person.IsActive;
                 entity.CreateDateTime = person.CreateDateTime;
                 entity.UpdateDateTime = person.UpdateDateTime;
-                entity.Comment = person.Comment;
+                entity.Comment        = person.Comment;
 
                 _context.SaveChanges();
                 return Ok(person);
