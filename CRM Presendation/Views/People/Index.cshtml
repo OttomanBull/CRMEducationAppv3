@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title="Person";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+@model List<PersonViewModel>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Person List</title>
+</head>
+<body>
+    <h1>Person List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Status</th>
+                <th>Phone</th>
+                <th>CompanyId</th>
+                <th>IsActive</th>
+                <th>CreateDateTime</th>
+                <th>UpdateDateTime</th>
+                <th>Comment</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var person in Model)
+            {
+                <tr>
+                    <td>@person.Name</td>
+                    <td>@person.Surname</td>
+                    <td>@person.Status</td>
+                    <td>@person.Phone</td>
+                    <td>@person.CompanyId</td>
+                    <td>@person.IsActive</td>
+                    <td>@person.CreateDateTime</td>
+                    <td>@person.UpdateDateTime</td>
+                    <td>@person.Comment</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
+
+</script>
