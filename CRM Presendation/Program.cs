@@ -1,3 +1,5 @@
+using System.Web.Mvc;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -22,6 +24,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=PersonelController}/{action=Index}/{id?}");
+    pattern: "{controller}/{action}/{id}",
+    defaults: new {controller="Login",action="Index",id=UrlParameter.Optional});
 
 app.Run();

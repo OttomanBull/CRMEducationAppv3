@@ -17,7 +17,6 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Name</th>
                 <th>Surname</th>
                 <th>Status</th>
@@ -32,16 +31,25 @@
         <tbody>
             @foreach (var person in Model)
             {
-                <tr>
-             
-                    <td>@person.Id</td>
+                <tr>      
                     <td>@person.Name</td>
-                    <td>@person.Surname</td>
+                    <td>@person.Surname</td>  
                     @if (@person.Status == "1")
                     {
-                        <td>Admin</td>
+                        <td>Yönetici</td>
+                    }    
+                    else if(@person.Status=="2")
+                    {
+                        <td>Eğitmen</td>
                     }
-                   
+                    else if (@person.Status == "3")
+                    {
+                        <td>Kullanıcı</td>
+                    }
+                    else
+                    {
+                        <td>@person.Status</td>
+                    }
                     <td>@person.Phone</td>
                     <td>@person.CompanyId</td>
                     <td>@person.IsActive</td>
