@@ -10,17 +10,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-   
+
     <title>Activity List</title>
 </head>
 <body>
-
     @Html.Partial("_ViewMenu")
-    <table class="table">
-       
-        <tbody>
-        </tbody>
-    </table>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
     <!-- <link rel="stylesheet" href="Index.css/> -->
     <div class="container">
         <div class="row">
@@ -45,15 +44,14 @@
                         <table class="table">
                             <thead>
                                 <tr>
-
-                                    <th>Eğitmen Id</th>
-                                    <th>Eğitim Id</th>
-                                    <th>Etkinlik Tipi</th>
+                                    <th>Eğitim</th>
+                                    <th>Eğitmen</th>
+                                    <th>Etkinlik Tipi </th>
                                     <th>Etkinlik Konumu</th>
                                     <th>Etkinlik Zamanı</th>
                                     <th>Etkinlik Fiyatı</th>
-                                    <th>Minimum Kişi Sayısı</th>
-                                    <th>Maximum Kişi Sayısı</th>
+                                    <th>Sertifika Durumu </th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -64,10 +62,8 @@
                                         <td>@activity.InstructorId</td>
                                         <td>@activity.ActivityType</td>
                                         <td>@activity.ActivityLocation</td>
-                                        <td>@activity.ActivityDate</td>
                                         <td>@activity.ActivityPrice</td>
-                                        <td>@activity.ClassLowerLimit</td>
-                                        <td>@activity.ClassUpperLimit</td>
+                                        <td>@activity.Certificate</td>
                                     </tr>
                                 }
                             </tbody>
