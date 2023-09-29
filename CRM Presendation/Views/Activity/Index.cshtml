@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "Activity";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+@model List<ActivityViewModel>
+
+<!DOCTYPE html>
+<html>
+<head>
+   
+    <title>Activity List</title>
+</head>
+<body>
+
+    @Html.Partial("_ViewMenu")
+    <table class="table">
+       
+        <tbody>
+        </tbody>
+    </table>
+    <!-- <link rel="stylesheet" href="Index.css/> -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-10">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col col-sm-3 col-xs-12">
+                                <h4 class="title">Kişiler<span></span></h4>
+                            </div>
+                            <div class="col-sm-9 col-xs-12 text-right">
+                                <div class="btn_group">
+                                    <input type="text" class="form-control" placeholder="Arayın">
+                                    <button class="btn btn-default" title="Düzenle"><i class="fa fa-sync-alt"></i> Düzenle</button>
+                                    <button class="btn btn-default" title="Ekle"><i class="fa fa-file-pdf"></i> Ekle</button>
+                                    <button class="btn btn-default" title="Sil"><i class="fas fa-file-excel"></i> Sil</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+
+                                    <th>Eğitmen Id</th>
+                                    <th>Eğitim Id</th>
+                                    <th>Etkinlik Tipi</th>
+                                    <th>Etkinlik Konumu</th>
+                                    <th>Etkinlik Zamanı</th>
+                                    <th>Etkinlik Fiyatı</th>
+                                    <th>Minimum Kişi Sayısı</th>
+                                    <th>Maximum Kişi Sayısı</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var activity in Model)
+                                {
+                                    <tr>
+                                        <td>@activity.EducationId</td>
+                                        <td>@activity.InstructorId</td>
+                                        <td>@activity.ActivityType</td>
+                                        <td>@activity.ActivityLocation</td>
+                                        <td>@activity.ActivityDate</td>
+                                        <td>@activity.ActivityPrice</td>
+                                        <td>@activity.ClassLowerLimit</td>
+                                        <td>@activity.ClassUpperLimit</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

@@ -1,16 +1,17 @@
 ﻿@{
-    ViewBag.Title = "Person";
+    ViewBag.Title = "Company";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 
-@model List<PersonViewModel>
+@model List<CompanyViewModel>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Person List</title>
+
+    <title>Company List</title>
 </head>
 <body>
     @Html.Partial("_ViewMenu")
@@ -20,9 +21,7 @@
     <br />
     <br />
     <!-- <link rel="stylesheet" href="Index.css/> -->
-
     <div class="container">
-
         <div class="row">
             <div class="col-md-offset-1 col-md-10">
                 <div class="panel">
@@ -45,53 +44,33 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                   
-                                    <th>İsim</th>
-                                    <th>Soyisim</th>
-                                    <th>Statü</th>
-                                    <th>Telefon</th>
-                                    <th>Şirket Adı</th>
-                                    <th>Aktif mi?</th>
-                                    <th>Oluşturma Tarihi</th>
-                                    <th>Yorum</th>
+                                    <th>Şirket İsmi</th>
+                                    <th>Şirket Konumu</th>
+                                    <th>Şirket Telefonu</th>
+                                    <th>Web Sitesi</th>
+                                    <th>Şirket Aktif mi? </th>
+                                    <th>Eklenme Tarihi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var person in Model)
+                                @foreach (var company in Model)
                                 {
                                     <tr>
-                                        <td>@person.Name</td>
-                                        <td>@person.Surname</td>
-                                        @if (@person.Status == "1")
-                                        {
-                                            <td>Yönetici</td>
-                                        }
-                                        else if (@person.Status == "2")
-                                        {
-                                            <td>Eğitmen</td>
-                                        }
-                                        else if (@person.Status == "3")
-                                        {
-                                            <td>Kullanıcı</td>
-                                        }
-                                        else
-                                        {
-                                            <td>@person.Status</td>
-                                        }
-                                        <td>@person.Phone</td>
-                                        <td>@person.CompanyId</td>
-                                        <td>@person.IsActive</td>
-                                        <td>@person.CreateDateTime</td>          
-                                        <td>@person.Comment</td>
+                                        <td>@company.CompanyName</td>
+                                        <td>@company.CompanyLocation</td>
+                                        <td>@company.CompanyPhone</td>
+                                        <td>@company.WebSite</td>
+                                        <td>@company.IsActive</td>
+                                        <td>@company.CreateDateTime</td>       
                                     </tr>
-                                } 
+                                }
                             </tbody>
                         </table>
-                    </div>
-                  
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    </div>
 </body>
 </html>

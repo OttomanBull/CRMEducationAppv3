@@ -23,7 +23,7 @@ namespace CRM_Presendation.Controllers
         public IActionResult IndexAsync()
         {
             var _personViewModels = GetAllPeople();
-
+            
             return View(_personViewModels.Result.ToList());
         }
 
